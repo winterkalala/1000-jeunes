@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Services - Association 1000 Jeunes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        /* ========== HEADER MODERNISÉ ========== */
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .barre {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 15px;
+            padding: 0 40px;
+            list-style: none;
+        }
+
+        .onglets {
+            list-style: none;
+        }
+
+        .onglet {
+            display: inline-block;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 10px 25px;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .onglet:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-2px);
+        }
+
+        /* Onglet actif avec effet de soulignement */
+        .onglet.actif {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        /* Effet de soulignement au survol */
+        .onglet::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+            border-radius: 3px;
+        }
+
+        .onglet:hover::after {
+            width: 70%;
+        }
+
+        /* ========== SECTION NOS SERVICES ========== */
+        .nave {
+            text-align: center;
+            padding: 60px 20px 40px;
+            position: relative;
+        }
+
+        .nave h1 {
+            font-size: 56px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+
+        .nave::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin: 20px auto 0;
+            border-radius: 4px;
+        }
+
+        /* ========== GRILLE DES SERVICES ========== */
+        .block1, .block2 {
+            max-width: 1300px;
+            margin: 30px auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .block11, .block12, .block13 {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .service {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        /* Dégradé décoratif au survol */
+        .service::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service img {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea20, #764ba220);
+            border-radius: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lekende {
+            color: #4a5568;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        .lekende p {
+            font-size: 20px;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        /* Icônes SVG intégrées */
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .block1, .block2 {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+            
+            .barre {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .nave h1 {
+                font-size: 42px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .block1, .block2 {
+                grid-template-columns: 1fr;
+            }
+            
+            .barre {
+                padding: 0 20px;
+                gap: 10px;
+            }
+            
+            .onglet {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+            
+            .nave h1 {
+                font-size: 32px;
+            }
+        }
+
+        /* Animation d'apparition */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .service {
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .service:nth-child(1) { animation-delay: 0.1s; }
+        .service:nth-child(2) { animation-delay: 0.2s; }
+        .service:nth-child(3) { animation-delay: 0.3s; }
+        .service:nth-child(4) { animation-delay: 0.4s; }
+        .service:nth-child(5) { animation-delay: 0.5s; }
+        .service:nth-child(6) { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <!-- HEADER MODERNISÉ -->
+    <header>
+        <ul class="barre">
+            <li class="onglets">
+                <a href="accueil.html" class="onglet">Accueil</a>  
+            </li>
+            <li class="onglets">
+                <a href="#" class="onglet actif">Services</a> 
+            </li>
+            <li class="onglets">
+                <a href="actualite.html" class="onglet">Actualité</a> 
+            </li>
+            <li class="onglets">
+                <a href="info.html" class="onglet">Plus d'info</a> 
+            </li>
+        </ul>
+    </header>
+
+    <!-- TITRE NOS SERVICES -->
+    <div class="nave">
+        <h1>NOS SERVICES</h1>
+    </div>
+
+    <!-- PREMIÈRE SECTION DE SERVICES -->
+    <div class="block1">
+        <div class="block11">
+            <div class="service">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23667eea' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z'/%3E%3C/svg%3E" alt="info" class="service-icon">
+                <div>
+                    <legend class="lekende">
+                        <p>Formation Informatique</p>
+                        Nous organisons différentes formations dans le domaine informatique qui peuvent élargir votre connaissance et améliorer votre compétence que vous possédez déjà. À l'aide d'une équipe d'IR qualifiés dans la formation, nous vous assurons la fiabilité de notre formation.
+                    </legend>
+                </div>
+            </div>
+            <div class="service">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23667eea' viewBox='0 0 24 24'%3E%3Cpath d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 7h10v2H7zm0 4h10v2H7zm0 4h7v2H7z'/%3E%3C/svg%3E" alt="renovation" class="service-icon">
+                <div>
+                    <legend class="lekende">
+                        <p>Rénovation maison</p>
+                        Services professionnels de rénovation pour votre maison avec des équipes qualifiées et des matériaux de qualité.
+                    </legend>
+                </div>
+            </div>
+            <div class="service">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23667eea' viewBox='0 0 24 24'%3E%3Cpath d='M4 10h3v7H4zm6 0h3v7h-3zm6 0h3v7h-3zM4 4h16v4H4z'/%3E%3C/svg%3E" alt="cloture" class="service-icon">
+                <div>
+                    <legend class="lekende">
+                        <p>Rénovation de la clôture</p>
+                        Réfection et embellissement de vos clôtures pour plus de sécurité et d'esthétique.
+                    </legend>
+                </div>
+            </div>
+        </div>
+        <div class="block12">
+            <div class="service">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23667eea' viewBox='0 0 24 24'%3E%3Cpath d='M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12z'/%3E%3C/svg%3E" alt="automatisation" class="service-icon">
+                <div>
+                    <legend class="lekende">
+                        <p>Automatisation à domicile</p>
+                        Solutions domotiques pour automatiser votre maison : éclairage, volets, température, sécurité.
+                    </legend>
+                </div>
+            </div>
+            <div class="service">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23667eea' viewBox='0 0 24 24'%3E%3Cpath d='M20 8h-2.81c-.45-.78-1.07-1.45-1.82-1.96L17 4.41 15.59 3l-2.17 2.17C12.96 5.06 12.49 5 12 5s-.96.06-1.41.17L8.41 3 7 4.41l1.62 1.63c-.75.51-1.38 1.18-1.82 1.96H4c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h2c0 1.66 1.34 3 3 3s3-1.34 3-3h4c0 1.66 1.34 3 3 3s3-1.34 3-3h2c1.1 0 2-.9 2-2v-6c0-1.1-.9-2-2-2zm-6 4H6v-2h8v2zm4-4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1z'/%3E%3C/svg%3E" alt="reparation" class="service-icon">
+                <div>
+                    <legend class="lekende">
+                        <p>Réparation d'erreur</p>
+                        Diagnostic et correction rapide de toutes vos pannes électriques et électroniques.
+                    </legend>
+                </div>
+            </div>
+            <div class="service">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23667eea' viewBox='0 0 24 24'%3E%3Cpath d='M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7z'/%3E%3C/svg%3E" alt="eclairage" class="service-icon">
+                <div>
+                    <legend class="lekende">
+                        <p>Éclairage LED solution</p>
+                        Installation d'éclairage LED économique et design pour votre intérieur et extérieur.
+                    </legend>
+                </div>
+            </div>
+        </div>
+        <div class="block13">
+            <div class="service">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23667eea' viewBox='0 0 24 24'%3E%3Cpath d='M18 6h-2c0-2.21-1.79-4-4-4S8 3.79 8 6H6c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-8 4c0 .55-.45 1-1 1s-1-.45-1-1V8h2v2zm2-6c1.1 0 2 .9 2 2h-4c0-1.1.9-2 2-2zm4 6c0 .55-.45 1-1 1s-1-.45-1-1V8h2v2z'/%3E%3C/svg%3E" alt="immobilier" class="service-icon">
+                <div>
+                    <legend class="lekende">
+                        <p>Agence Immobilière</p>
+                        Recherche, vente et location de biens immobiliers de qualité à Kinshasa.
+                    </legend>
+                </div>
+            </div>
+            <div class="service">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23667eea' viewBox='0 0 24 24'%3E%3Cpath d='M18 4H6v16h12V4zm-4 14h-4v-2h4v2zm0-4h-4v-2h4v2zm0-4h-4V8h4v2z'/%3E%3C/svg%3E" alt="proprete" class="service-icon">
+                <div>
+                    <legend class="lekende">
+                        <p>Kin Propre</p>
+                        Service de nettoyage professionnel pour vos espaces de vie et de travail.
+                    </legend>
+                </div>
+            </div>
+            <div class="service">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23667eea' viewBox='0 0 24 24'%3E%3Cpath d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 7h10v2H7zm0 4h10v2H7zm0 4h7v2H7z'/%3E%3C/svg%3E" alt="conseil" class="service-icon">
+                <div>
+                    <legend class="lekende">
+                        <p>Conseil & Assistance</p>
+                        Accompagnement personnalisé pour tous vos projets professionnels et personnels.
+                    </legend>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DEUXIÈME SECTION DE SERVICES -->
+    <div class="block2">
+        <div class="block11">
+            <div class="service">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23667eea' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z'/%3E%3C/svg%3E" alt="conseil" class="service-icon">
+                <div>
+                    <legend class="lekende">
+                        Expertise technique pour tous vos projets informatiques et numériques.
+                    </legend>
+                </div>
+            </div>
+            <div class="service">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23667eea' viewBox='0 0 24 24'%3E%3Cpath d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 7h10v2H7zm0 4h10v2H7zm0 4h7v2H7z'/%3E%3C/svg%3E" alt="renovation" class="service-icon">
+                <div>
+                    <legend class="lekende">
+                        <p>Rénovation maison</p>
+                        Transformation complète de votre habitat avec des finitions de qualité.
+                    </legend>
+                </div>
+            </div>
+            <div class="service">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23667eea' viewBox='0 0 24 24'%3E%3Cpath d='M4 10h3v7H4zm6 0h3v7h-3zm6 0h3v7h-3zM4 4h16v4H4z'/%3E%3C/svg%3E" alt="cloture" class="service-icon">
+                <div>
+                    <legend class="lekende">
+                        <p>Rénovation de la clôture</p>
+                        Installation et rénovation de clôtures modernes et sécurisées.
+                    </legend>
+                </div>
+            </div>
+        </div>
+        <div class="block12">
+            <div class="service">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23667eea' viewBox='0 0 24 24'%3E%3Cpath d='M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z'/%3E%3C/svg%3E" alt="autre" class="service-icon">
+                <div>
+                    <legend class="lekende">
+                        Solutions innovantes adaptées à vos besoins spécifiques.
+                    </legend>
+                </div>
+            </div>
+            <div class="service">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23667eea' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z'/%3E%3C/svg%3E" alt="assistance" class="service-icon">
+                <div>
+                    <legend class="lekende">
+                        Assistance technique 24/7 pour tous vos équipements.
+                    </legend>
+                </div>
+            </div>
+            <div class="service">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23667eea' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z'/%3E%3C/svg%3E" alt="conseil2" class="service-icon">
+                <div>
+                    <legend class="lekende">
+                        Conseil personnalisé pour optimiser vos projets.
+                    </legend>
+                </div>
+            </div>
+        </div>
+        <div class="block13">
+            <div class="service">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23667eea' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z'/%3E%3C/svg%3E" alt="solution" class="service-icon">
+                <div>
+                    <legend class="lekende">
+                        Solutions clés en main pour vos besoins quotidiens.
+                    </legend>
+                </div>
+            </div>
+            <div class="service">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23667eea' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z'/%3E%3C/svg%3E" alt="support" class="service-icon">
+                <div>
+                    <legend class="lekende">
+                        Support technique de proximité et réactivité garantie.
+                    </legend>
+                </div>
+            </div>
+            <div class="service">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23667eea' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z'/%3E%3C/svg%3E" alt="formation" class="service-icon">
+                <div>
+                    <legend class="lekende">
+                        Formations continues pour le développement de vos compétences.
+                    </legend>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

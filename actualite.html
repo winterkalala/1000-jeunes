@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualités - Association 1000 Jeunes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        /* ========== HEADER MODERNISÉ ========== */
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .barre {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 15px;
+            padding: 0 40px;
+        }
+
+        .option {
+            display: inline-block;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 10px 25px;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .option:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-2px);
+        }
+
+        .option::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+            border-radius: 3px;
+        }
+
+        .option:hover::after {
+            width: 70%;
+        }
+
+        #place {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        /* ========== TITRE PRINCIPAL ========== */
+        .block0 {
+            text-align: center;
+            padding: 60px 20px 40px;
+        }
+
+        .titre0 {
+            font-size: 56px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 30px;
+            letter-spacing: -1px;
+        }
+
+        .sous {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .icon {
+            width: 12px;
+            height: 12px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+        }
+
+        .trai {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 3px;
+        }
+
+        /* ========== SECTION ACTUALITÉS ========== */
+        .block1, .block2, .block3 {
+            max-width: 1300px;
+            margin: 50px auto;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            padding: 30px;
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .block1:hover, .block2:hover, .block3:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .text {
+            flex: 1;
+        }
+
+        .titre1, .titre2, .titre3 {
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .lekende1, .lekende2, .lekende3 {
+            color: #4a5568;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        .bordure1, .bordure2, .bordure3 {
+            flex: 1;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .img1, .img4, .img7 {
+            position: relative;
+            height: 300px;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .img2, .img3, .img5, .img6, .img8, .img9 {
+            position: absolute;
+            background-size: cover;
+            background-position: center;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        /* Images spécifiques */
+        .img2 {
+            width: 60%;
+            height: 70%;
+            top: 15%;
+            left: 5%;
+            background-image: url('../image/img1/img1.JPG');
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .img3 {
+            width: 50%;
+            height: 60%;
+            bottom: 10%;
+            right: 5%;
+            background-image: url('../image/img1/img2.JPG');
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .img5 {
+            width: 100%;
+            height: 100%;
+            background-image: url('../image/img2/img1.JPG');
+        }
+
+        .img6 {
+            width: 50%;
+            height: 50%;
+            bottom: 10%;
+            right: 10%;
+            background-image: url('../image/img2/img2.JPG');
+            border: 3px solid white;
+        }
+
+        .img8 {
+            width: 55%;
+            height: 65%;
+            top: 20%;
+            left: 5%;
+            background-image: url('../image/img4/img1.JPG');
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .img9 {
+            width: 50%;
+            height: 55%;
+            bottom: 15%;
+            right: 5%;
+            background-image: url('../image/img4/img3.JPG');
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .img2:hover, .img3:hover, .img6:hover, .img8:hover, .img9:hover {
+            transform: scale(1.05);
+        }
+
+        /* Inverser l'ordre pour block2 */
+        .block2 .text {
+            order: 2;
+        }
+
+        .block2 .bordure2 {
+            order: 1;
+        }
+
+        /* ========== SECTION EQUIPES ========== */
+        .block4 {
+            text-align: center;
+            max-width: 1300px;
+            margin: 60px auto 30px;
+            padding: 0 20px;
+        }
+
+        .titre4 {
+            font-size: 48px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .lekende4 {
+            color: #4a5568;
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .block5 {
+            max-width: 1300px;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .team {
+            text-align: center;
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .team:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .image1, .image2, .image3 {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
+
+        .team p {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-top: 15px;
+        }
+
+        /* ========== SECTION CONTACT ========== */
+        .corp3 {
+            max-width: 1300px;
+            margin: 60px auto;
+            display: flex;
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .contact {
+            flex: 1;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+        }
+
+        .cont {
+            color: white;
+            font-size: 42px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .adresse {
+            flex: 2;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .sec {
+            color: #667eea;
+            font-size: 20px;
+            margin: 20px 0 15px 0;
+            font-weight: 700;
+        }
+
+        .sec:first-of-type {
+            margin-top: 0;
+        }
+
+        .quiz {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px;
+            color: #4a5568;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-radius: 10px;
+        }
+
+        .quiz:hover {
+            background: #f7fafc;
+            transform: translateX(5px);
+            color: #667eea;
+        }
+
+        .con {
+            width: 30px;
+            height: 30px;
+        }
+
+        .carte {
+            flex: 1.5;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 20px;
+            background-image: url('../image/photo/carte1.JPG');
+            background-size: cover;
+            background-position: center;
+            min-height: 300px;
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            margin-top: 50px;
+        }
+
+        footer h4 {
+            color: #4a5568;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1024px) {
+            .block1, .block2, .block3 {
+                flex-direction: column;
+                margin: 30px 20px;
+            }
+
+            .block2 .text {
+                order: 1;
+            }
+
+            .block2 .bordure2 {
+                order: 2;
+            }
+
+            .block5 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .corp3 {
+                flex-direction: column;
+            }
+
+            .contact {
+                min-height: 200px;
+            }
+
+            .carte {
+                min-height: 250px;
+            }
+
+            .barre {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .titre0 {
+                font-size: 36px;
+            }
+
+            .titre1, .titre2, .titre3 {
+                font-size: 28px;
+            }
+
+            .titre4 {
+                font-size: 36px;
+            }
+
+            .block5 {
+                grid-template-columns: 1fr;
+            }
+
+            .barre {
+                padding: 0 20px;
+                gap: 10px;
+            }
+
+            .option {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+
+            .img2, .img3, .img8, .img9 {
+                width: 80%;
+                height: auto;
+                position: relative;
+                margin: 10px auto;
+            }
+
+            .img1, .img7 {
+                height: auto;
+                display: flex;
+                flex-direction: column;
+            }
+        }
+
+        /* Animation d'apparition */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .block1, .block2, .block3, .team {
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .block1 { animation-delay: 0.1s; }
+        .block2 { animation-delay: 0.2s; }
+        .block3 { animation-delay: 0.3s; }
+        .team:nth-child(1) { animation-delay: 0.4s; }
+        .team:nth-child(2) { animation-delay: 0.5s; }
+        .team:nth-child(3) { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <div class="corp">
+        <!-- HEADER MODERNISÉ -->
+        <header>
+            <div class="barre">
+                <a href="accueil.html" class="option">Accueil</a>
+                <a href="service.html" class="option" >Services</a>
+                <a href="" class="option" id="place">Actualité</a> 
+                <a href="info.html" class="option">Plus d'info</a> 
+            </div>
+        </header>
+
+        <!-- TITRE PRINCIPAL -->
+        <div class="block0">
+            <h1 class="titre0">NOS ACTUALITÉS</h1>
+            <div class="sous">
+                <div class="icon"></div>
+                <div class="trai"></div>
+                <div class="icon"></div>
+                <div class="trai"></div>
+                <div class="icon"></div>
+            </div>
+        </div>
+
+        <!-- ACTUALITÉ 1 : INFORMATIQUE -->
+        <div class="block1">
+            <div class="text">
+                <h1 class="titre1">💻 INFORMATIQUE</h1>
+                <legend class="lekende1">
+                    Nous organisons différentes formations dans le domaine informatique qui peuvent élargir vos connaissances et améliorer vos compétences. Avec une équipe d'experts qualifiés, nous vous assurons la fiabilité de nos formations pour devenir des professionnels accomplis.
+                </legend>
+            </div>
+            <div class="bordure1">
+                <div class="img1">
+                    <div class="img2"></div>
+                    <div class="img3"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ACTUALITÉ 2 : MODE ET BEAUTÉ -->
+        <div class="block2">
+            <div class="bordure2">
+                <div class="img4">
+                    <div class="img5">
+                        <div class="img6"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="text">
+                <h1 class="titre2">👗 MODE ET BEAUTÉ</h1>
+                <legend class="lekende2">
+                    Dans le cadre de rendre la femme plus indépendante dans la satisfaction de ses besoins, nous offrons l'opportunité à toutes celles qui veulent apprendre des métiers comme la couture, le maquillage professionnel, la restauration, la maroquinerie, et bien d'autres encore.
+                </legend>
+            </div>
+        </div>
+
+        <!-- ACTUALITÉ 3 : SPORT ET LOISIR -->
+        <div class="block3">
+            <div class="text">
+                <h1 class="titre3">⚽ SPORT ET LOISIR</h1>
+                <legend class="lekende3">
+                    L'Association 1000 jeunes organise un match amical qui opposera la TEAM Informatique et la TEAM Peinture LOLA. Rendez-vous au stade Vélodrome de Kintambo le samedi 12 août 2023 à partir de 12h. (En face du Collège Saint George) - Entrée libre et gratuite pour tous !
+                </legend>
+            </div>
+            <div class="bordure3">
+                <div class="img7">
+                    <div class="img8"></div>
+                    <div class="img9"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION ÉQUIPES -->
+        <div class="block4">
+            <h1 class="titre4">⭐ NOS ÉQUIPES</h1>
+            <legend class="lekende4">
+                Voici quelques exemples de nos équipes professionnelles qui sont là pour satisfaire vos besoins dans leur domaine d'expertise.
+            </legend>
+        </div>
+
+        <div class="block5">
+            <div class="team">
+                <img src="../image/img/team1.JPG" class="image1" alt="Team peinture">
+                <p>🎨 Team Peinture</p>
+            </div>
+            <div class="team">
+                <img src="../image/img/team2.JPG" class="image2" alt="Team électricien">
+                <p>⚡ Team Électricien</p>
+            </div>
+            <div class="team">
+                <img src="../image/img/team3.JPG" class="image3" alt="Team informaticien">
+                <p>💻 Team Informaticien</p>
+            </div>
+        </div>
+
+        <!-- SECTION CONTACT -->
+        <div class="corp3">
+            <div class="contact">
+                <h2 class="cont">Contact</h2>
+            </div>
+            <div class="adresse">
+                <h2 class="sec">📋 Secrétariat</h2>
+                <a href="#" class="quiz">📞 (+243) 899443917</a>
+                <a href="#" class="quiz">✉️ ephraimekalala20@gmail.com</a>
+                
+                <h2 class="sec">📢 Chargé de communication</h2>
+                <a href="#" class="quiz">📞 (+243) 899443917</a>
+                <a href="#" class="quiz">✉️ ephraimekalala20@gmail.com</a>
+            </div>
+            <div class="carte"></div>
+        </div>
+    </div>
+
+    <footer>
+        <h4>© Copyright from Ephra-winter DEV | Association 1000 Jeunes</h4>
+    </footer> 
+</body>
+</html>

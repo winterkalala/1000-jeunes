@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Plus d'info - Association 1000 Jeunes </title> 
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        /* ========== HEADER MODERNISÉ ========== */
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .barre {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 15px;
+            padding: 0 40px;
+        }
+
+        .option {
+            display: inline-block;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 10px 25px;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .option:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-2px);
+        }
+
+        .option::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+            border-radius: 3px;
+        }
+
+        .option:hover::after {
+            width: 70%;
+        }
+
+        #place {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        /* ========== SECTION PRÉSENTATION ========== */
+        .corp {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .block0 {
+            display: flex;
+            gap: 50px;
+            margin: 60px 0;
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+            animation-delay: 0.1s;
+        }
+
+        .nous {
+            flex: 1;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            min-height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nous::before {
+            content: '1000';
+            font-size: 180px;
+            font-weight: 800;
+            color: rgba(255,255,255,0.08);
+            position: absolute;
+            bottom: -40px;
+            right: -40px;
+        }
+
+        .nous::after {
+            content: 'JEUNES';
+            font-size: 70px;
+            font-weight: 800;
+            color: rgba(255,255,255,0.1);
+            position: absolute;
+            top: 30px;
+            left: 20px;
+            writing-mode: vertical-rl;
+        }
+
+        .nous1 {
+            flex: 1.5;
+            padding: 50px;
+        }
+
+        .nous1 h1 {
+            font-size: 42px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 30px;
+        }
+
+        .lekende {
+            color: #4a5568;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            font-size: 16px;
+        }
+
+        /* ========== VALEURS ========== */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin: 60px 0;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+            animation-delay: 0.2s;
+        }
+
+        .pote {
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            min-width: 200px;
+        }
+
+        .pote:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .pote h3 {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .icon:hover {
+            transform: scale(1.05);
+            border-color: #ffd700;
+        }
+
+        /* ========== MEMBRES DE L'ÉQUIPE ========== */
+        .block1 {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .block21 {
+            flex: 1;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .block21:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .image1, .image2, .image3, .image4 {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image1 { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .image2 { background: linear-gradient(135deg, #764ba2, #667eea); }
+        .image3 { background: linear-gradient(135deg, #f093fb, #f5576c); }
+        .image4 { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+
+        .t1, .t2, .t3, .t4 {
+            color: white;
+            font-size: 28px;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .text {
+            padding: 25px;
+        }
+
+        .text legend {
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .quiz {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px;
+            color: #4a5568;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-radius: 10px;
+        }
+
+        .quiz:hover {
+            background: #f7fafc;
+            transform: translateX(5px);
+            color: #667eea;
+        }
+
+        .con {
+            width: 28px;
+            height: 28px;
+        }
+
+        /* ========== LOCALISATION & PARTENAIRE ========== */
+        .corp1 {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .affiche {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .lieu {
+            width: 50px;
+            height: 50px;
+        }
+
+        .affiche h2 {
+            font-size: 28px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .text0 legend {
+            color: #4a5568;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .cache {
+            width: 30px;
+            height: 30px;
+            border-radius: 5px;
+        }
+
+        /* ========== FORMULAIRE DE CONTACT ========== */
+        .formulaire-section {
+            background: white;
+            border-radius: 25px;
+            padding: 50px;
+            margin: 50px 0;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+            animation-delay: 0.5s;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .form-header h2 {
+            font-size: 36px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .form-header p {
+            color: #4a5568;
+            font-size: 16px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 8px;
+        }
+
+        .form-group label .required {
+            color: #e53e3e;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 14px 18px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102,126,234,0.3);
+        }
+
+        /* Messages de validation */
+        .success-message {
+            background: #48bb78;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+
+        .error-message {
+            background: #f56565;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            margin-top: 50px;
+        }
+
+        footer h4 {
+            color: #4a5568;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1024px) {
+            .block0 {
+                flex-direction: column;
+            }
+            
+            .nous {
+                min-height: 200px;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+            
+            .barre {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .block1 {
+                flex-direction: column;
+            }
+            
+            .nous1 h1 {
+                font-size: 32px;
+            }
+            
+            .formulaire-section {
+                padding: 30px;
+            }
+            
+            .form-header h2 {
+                font-size: 28px;
+            }
+            
+            .barre {
+                padding: 0 20px;
+                gap: 10px;
+            }
+            
+            .option {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+            
+            .t1, .t2, .t3, .t4 {
+                font-size: 22px;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .block1:nth-child(1) .block21:nth-child(1) { animation-delay: 0.3s; }
+        .block1:nth-child(1) .block21:nth-child(2) { animation-delay: 0.35s; }
+        .block1:nth-child(2) .block21:nth-child(1) { animation-delay: 0.4s; }
+        .block1:nth-child(2) .block21:nth-child(2) { animation-delay: 0.45s; }
+        .corp1:nth-of-type(1) { animation-delay: 0.5s; }
+        .corp1:nth-of-type(2) { animation-delay: 0.55s; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="barre">
+            <a href="accueil.html" class="option">Accueil</a> 
+            <a href="service.html" class="option" >Services</a>
+            <a href="actualite.html" class="option">Actualité</a> 
+            <a href="#" class="option" id="place">Plus d'info</a>  
+        </div>
+    </header> 
+
+    <div class="corp">
+        <!-- SECTION PRÉSENTATION -->
+        <div class="block0">
+            <div class="nous"></div>
+            <div class="nous1">
+                <h1>❓ QUI SOMMES-NOUS ?</h1>
+                <legend class="lekende">
+                    Nous sommes une association basée à Kinshasa en République Démocratique du Congo, avec comme objectif de permettre aux jeunes congolais en général d'élargir leur champ de clientèle dans leur milieu d'action. Cela se traduit par plus de marché pour un ingénieur en bâtiment, plus d'acheteuses pour la dame qui vend des accessoires pour femmes, plus de plats à livrer pour ceux de la restauration, et bien d'autres.
+                </legend>
+                <legend class="lekende">
+                    Nous visons à éradiquer toute forme de frein dans l'épanouissement du jeune congolais détenteur d'une compétence ou connaissance dans un domaine de notre quotidien. Nous reconnaissons l'incapacité du pays à fournir du travail, mais la population n'en a pas moins de besoins à satisfaire : peindre sa maison, nettoyer son véhicule, changer l'installation électrique, et plus encore.
+                </legend>
+            </div>
+        </div>
+
+        <!-- VALEURS -->
+        <nav>
+            <div class="pote">
+                <h3>🔒 FIABILITÉ</h3>
+                <img src="../image/photo/nous4.JPG" class="icon" alt="Fiabilité">
+            </div>
+            <div class="pote">
+                <h3>⭐ QUALITÉ</h3>
+                <img src="../image/photo/nous3.JPG" class="icon" alt="Qualité">
+            </div>
+            <div class="pote">
+                <h3>💼 PROFESSIONNALISME</h3>
+                <img src="../image/photo/nous2.JPG" class="icon" alt="Professionnalisme">           
+            </div>
+        </nav>
+
+        <!-- MEMBRES DE L'ÉQUIPE - LIGNE 1 -->
+        <div class="block1">
+            <div class="block21" id="preso1">
+                <div class="image1">
+                    <h1 class="t1">👨‍💼 PRÉSIDENT</h1>
+                </div>
+                <div class="text">
+                    <legend>
+                        L'Association 1000 jeunes a comme Président <strong>Mr THOMMY KAZADI</strong>, ingénieur et formateur en Management, fondateur de l'association.
+                    </legend>
+                    <a href="#" class="quiz">💬 (+243) 816 781 738</a>
+                    <a href="#" class="quiz">📘 THOMMY KAZADI</a>
+                    <a href="#" class="quiz">🐦 THOMMY KAMUI</a>
+                    <a href="#" class="quiz">📸 THOMMY KAMUI</a>
+                    <a href="#" class="quiz">✉️ E-MAIL</a>
+                </div>
+            </div>
+            <div class="block21" id="preso2">
+                <div class="image2">
+                    <h1 class="t2">👨‍💼 PRÉSIDENT ADJOINT</h1>
+                </div>
+                <div class="text">
+                    <legend>
+                        L'Association 1000 jeunes a comme Président Adjoint <strong>Mr SERAPHIN NKAKU</strong>, ingénieur et formateur, dévoué à la cause des jeunes.
+                    </legend>
+                    <a href="#" class="quiz">💬 (+243) 816 781 738</a>
+                    <a href="#" class="quiz">📘 SERAPHIN NKAKU</a>
+                    <a href="#" class="quiz">🐦 SERAPHIN NKAKU</a>
+                    <a href="#" class="quiz">📸 SERAPHIN NKAKU</a>
+                    <a href="#" class="quiz">✉️ E-MAIL</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- MEMBRES DE L'ÉQUIPE - LIGNE 2 -->
+        <div class="block1">
+            <div class="block21" id="sec">
+                <div class="image3">
+                    <h1 class="t3">👩‍💼 SECRÉTAIRE</h1>
+                </div>
+                <div class="text">
+                    <legend>
+                        L'Association 1000 jeunes a comme Secrétaire <strong>Madame STEPHANIE KAZADI</strong>, une femme de valeur au service de la communauté.
+                    </legend>
+                    <a href="#" class="quiz">💬 (+243) 816 781 738</a>
+                    <a href="#" class="quiz">📘 STEPHANIE KAZADI</a>
+                    <a href="#" class="quiz">🐦 STEPHANIE KAZADI</a>
+                    <a href="#" class="quiz">📸 STEPHANIE KAZADI</a>
+                    <a href="#" class="quiz">✉️ E-MAIL</a>
+                </div>
+            </div>
+            <div class="block21" id="caisse">
+                <div class="image4">
+                    <h1 class="t4">💰 CHARGÉE DE FINANCE</h1>
+                </div>
+                <div class="text">
+                    <legend>
+                        L'Association 1000 jeunes a comme Chargée de Finance <strong>Madame BELLANGE KAZADI</strong>, experte en gestion financière.
+                    </legend>
+                    <a href="#" class="quiz">💬 (+243) 816 781 738</a>
+                    <a href="#" class="quiz">📘 BELLANGE KAZADI</a>
+                    <a href="#" class="quiz">🐦 BELLANGE KAZADI</a>
+                    <a href="#" class="quiz">📸 BELLANGE KAZADI</a>
+                    <a href="#" class="quiz">✉️ E-MAIL</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LOCALISATION -->
+    <div class="corp1" id="localisé">
+        <div class="affiche">
+            <img src="../image/icone/localisé.png" class="lieu" alt="Localisation">
+            <h2>📍 LOCALISATION</h2>
+        </div>
+        <div class="text0">
+            <legend>
+                Nous sommes situés sur l'avenue De la Paix n°20, quartier Joli-Parc dans la commune de Ngaliema. Référence : entrée Mont-Fleury, à 10 minutes de Kitambo Magasin.
+            </legend> 
+        </div>
+    </div>
+
+    <!-- DEVENIR PARTENAIRE -->
+    <div class="corp1" id="partenaire">
+        <div class="affiche">
+            <img src="../image/icone/membre.png" class="lieu" alt="Partenaire">
+            <h2>🤝 DEVENIR PARTENAIRE</h2>
+        </div>
+        <div class="text0">
+            <legend>
+                L'Association est disponible pour tout type de financement. Seuls, nous ne pourrons pas réaliser ou accompagner la jeunesse dans ce projet. Avec le peu que vous donnez, nous concevons de grandes choses au sein de notre jeunesse.
+            </legend>
+            <a href="#" class="quiz">📱 Orange (+243) 816 781 738</a>
+            <a href="#" class="quiz">📱 Vodacom (+243) 816 781 738</a>
+            <a href="#" class="quiz">📱 Airtel (+243) 816 781 738</a>
+            <a href="#" class="quiz">🏦 Compte Bancaire (+243) 816 781 738</a>
+        </div>
+    </div>
+
+    <!-- FORMULAIRE DE CONTACT -->
+    <div class="formulaire-section">
+        <div class="form-header">
+            <h2>📝 CONTACTEZ-NOUS</h2>
+            <p>Une question, une suggestion ou souhaitez-vous rejoindre notre association ? Remplissez le formulaire ci-dessous.</p>
+        </div>
+        
+        <form id="contactForm" class="form-grid" onsubmit="return validateForm(event)">
+            <div class="form-group">
+                <label>👤 Nom complet <span class="required">*</span></label>
+                <input type="text" id="nom" placeholder="Votre nom et prénom" required>
+            </div>
+            <div class="form-group">
+                <label>📧 Email <span class="required">*</span></label>
+                <input type="email" id="email" placeholder="votre@email.com" required>
+            </div>
+            <div class="form-group">
+                <label>📞 Téléphone</label>
+                <input type="tel" id="telephone" placeholder="+243 XX XXX XXXX">
+            </div>
+            <div class="form-group">
+                <label>🏙️ Ville</label>
+                <input type="text" id="ville" placeholder="Kinshasa / Autre">
+            </div>
+            <div class="form-group">
+                <label>📌 Sujet <span class="required">*</span></label>
+                <select id="sujet" required>
+                    <option value="">Sélectionnez un sujet</option>
+                    <option>Devenir membre</option>
+                    <option>Devenir partenaire</option>
+                    <option>Information sur les formations</option>
+                    <option>Demande de service</option>
+                    <option>Autre demande</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>📋 Comment nous avez-vous connu ?</label>
+                <select id="source">
+                    <option>Sélectionnez</option>
+                    <option>Réseaux sociaux</option>
+                    <option>Bouche à oreille</option>
+                    <option>Événement / Match</option>
+                    <option>Autre</option>
+                </select>
+            </div>
+            <div class="form-group full-width">
+                <label>💬 Votre message <span class="required">*</span></label>
+                <textarea id="message" placeholder="Décrivez votre demande ou votre message ici..." required></textarea>
+            </div>
+            <button type="submit" class="btn-submit">📨 Envoyer le message</button>
+        </form>
+        <div id="successMessage" class="success-message">
+            ✓ Message envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.
+        </div>
+        <div id="errorMessage" class="error-message">
+            ⚠ Veuillez remplir tous les champs obligatoires.
+        </div>
+    </div>
+
+    <footer>
+        <h4>© Copyright from Ephra-winter DEV | Association 1000 Jeunes</h4>
+    </footer>
+
+    <script>
+        function validateForm(event) {
+            event.preventDefault();
+            
+            const nom = document.getElementById('nom').value;
+            const email = document.getElementById('email').value;
+            const sujet = document.getElementById('sujet').value;
+            const message = document.getElementById('message').value;
+            
+            if (!nom || !email || !sujet || !message) {
+                document.getElementById('errorMessage').style.display = 'block';
+                document.getElementById('successMessage').style.display = 'none';
+                setTimeout(() => {
+                    document.getElementById('errorMessage').style.display = 'none';
+                }, 3000);
+                return false;
+            }
+            
+            // Validation email simple
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                document.getElementById('errorMessage').innerHTML = '⚠ Veuillez entrer une adresse email valide.';
+                document.getElementById('errorMessage').style.display = 'block';
+                document.getElementById('successMessage').style.display = 'none';
+                setTimeout(() => {
+                    document.getElementById('errorMessage').style.display = 'none';
+                    document.getElementById('errorMessage').innerHTML = '⚠ Veuillez remplir tous les champs obligatoires.';
+                }, 3000);
+                return false;
+            }
+            
+            // Si tout est valide
+            document.getElementById('successMessage').style.display = 'block';
+            document.getElementById('errorMessage').style.display = 'none';
+            document.getElementById('contactForm').reset();
+            
+            setTimeout(() => {
+                document.getElementById('successMessage').style.display = 'none';
+            }, 5000);
+            
+            return false;
+        }
+    </script> 
+</body>
+</html>

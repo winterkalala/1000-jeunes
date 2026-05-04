@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Association 1000 Jeunes - Révélez votre potentiel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Header amélioré */
+        header {
+            max-width: 1300px;
+            height: 550px;
+            margin: 20px auto;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDQwIDQwIj48cGF0aCBmaWxsPSIjNDQ0IiBmaWxsLW9wYWNpdHk9IjAuMSIgZD0iTTAgMGg0MHY0MEgweiIvPjxwYXRoIGQ9Ik0yMCAyMGwxMC01LTEwLTV6IiBmaWxsPSIjZmZkY2I5Ii8+PC9zdmc+');
+            background-size: cover, 30px;
+            background-position: center;
+            border-radius: 25px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .barre {
+            display: flex;
+            justify-content: flex-end;
+            gap: 30px;
+            padding: 25px 50px;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .option {
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+            border-radius: 25px;
+        }
+
+        .option:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        #place {
+            background: rgba(255,255,255,0.2);
+            border-bottom: 3px solid #ffd700;
+        }
+
+        .expre {
+            padding: 40px 60px;
+            max-width: 600px;
+        }
+
+        h1 {
+            color: white;
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        legend {
+            color: #f0f0f0;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-top: 20px;
+        }
+
+        .bouton {
+            margin: 30px 60px;
+        }
+
+        .touch {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .touch:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        /* Navigation */
+        nav {
+            max-width: 1300px;
+            margin: 30px auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: white;
+            border-radius: 20px;
+            padding: 15px 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .nav1 {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav2 {
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .nav2:hover {
+            transform: translateY(-5px);
+        }
+
+        h3 {
+            color: #4a5568;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .icon:hover {
+            border-color: #ffd700;
+            transform: scale(1.05);
+        }
+
+        /* Corps principal */
+        .corps {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            gap: 30px;
+            padding: 20px;
+        }
+
+        article {
+            flex: 3;
+        }
+
+        .boite {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 30px;
+            display: flex;
+            gap: 25px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .boite:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .image {
+            flex: 1;
+        }
+
+        h2 {
+            color: #2d3748;
+            font-size: 26px;
+            margin-bottom: 15px;
+        }
+
+        .image1, .image3, .image5, .image7 {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image2, .image4, .image6, .image8 {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.3s ease;
+        }
+
+        .image1:hover .image2,
+        .image3:hover .image4,
+        .image5:hover .image6,
+        .image7:hover .image8 {
+            transform: scale(1.1);
+        }
+
+        .text {
+            flex: 1;
+        }
+
+        .text p {
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 14px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        select:hover {
+            border-color: #667eea;
+        }
+
+        /* Sidebar */
+        .block {
+            flex: 1;
+        }
+
+        .block1, .block2 {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .quiz {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px;
+            color: #4a5568;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-radius: 10px;
+        }
+
+        .quiz:hover {
+            background: #f7fafc;
+            transform: translateX(5px);
+            color: #667eea;
+        }
+
+        .con {
+            width: 30px;
+            height: 30px;
+        }
+
+        /* Section formation */
+        .formation {
+            max-width: 1300px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .form1 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 25px;
+            padding: 50px;
+            display: flex;
+            gap: 50px;
+            align-items: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .titre {
+            color: white;
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .toph {
+            flex: 1;
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            padding: 30px;
+            list-style: none;
+        }
+
+        .toph li {
+            padding: 10px 0;
+            color: #2d3748;
+            font-weight: 500;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .toph ul {
+            padding-left: 25px;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        /* Pied de page */
+        .pied {
+            max-width: 1300px;
+            margin: 50px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+
+        .post {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .post:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .post h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .post p {
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .clique {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .clique:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Contact section */
+        .corp3 {
+            max-width: 1300px;
+            margin: 50px auto;
+            display: flex;
+            gap: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .contact {
+            flex: 1;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cont {
+            color: white;
+            font-size: 36px;
+            font-weight: 800;
+        }
+
+        .adresse {
+            flex: 2;
+            padding: 30px;
+        }
+
+        .sec {
+            color: #667eea;
+            margin: 20px 0 10px 0;
+            font-size: 20px;
+        }
+
+        .adresse .quiz {
+            padding: 8px 0;
+        }
+
+        .carte {
+            flex: 1.5;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 20px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            margin-top: 50px;
+        }
+
+        h4 {
+            color: #4a5568;
+            font-size: 16px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .barre {
+                justify-content: center;
+            }
+            
+            .expre h1 {
+                font-size: 36px;
+            }
+            
+            .corps {
+                flex-direction: column;
+            }
+            
+            .form1 {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .corp3 {
+                flex-direction: column;
+            }
+            
+            .contact {
+                padding: 50px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav1 {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .boite {
+                flex-direction: column;
+            }
+            
+            .pied {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="barre">
+            <a href="#" class="option" id="place">Accueil</a>
+            <a href="service.html" class="option">Services</a> 
+            <a href="actualite.html" class="option">Actualité</a>  
+            <a href="info.html" class="option"> Plus d'info</a>  
+        </div>
+        <div class="expre">
+            <h1>Nous sommes</h1>
+            <h1>une Ass. de jeunes congolais</h1>
+            <legend>
+                dont le but est de promouvoir le métier de la jeunesse congolaise dans différents domaines de la vie. Pour réduire le taux de chômage
+                qui règne au milieu de cette jeunesse.<br>
+                C'est dans cet angle que l'Association 1000 jeunes met à disposition des équipes qualifiées pour la réalisation de différentes tâches.
+            </legend>
+        </div>
+        <div class="bouton">
+            <a href="#contact" class="touch">Contacter-nous</a>
+        </div>
+    </header>
+
+    <nav>
+        <img src="../image/img/logo.JPG" class="logo" alt="Logo">
+        <div class="nav1">
+            <div class="nav2">
+                <a href="#"><h3>Président</h3></a>
+                <img src="../image/photo/itachi3.JPG" class="icon" alt="Président">
+            </div>
+            <div class="nav2">
+                <a href="#"><h3>P. Adjoint</h3></a>
+                <img src="../image/photo/lune.JPG" class="icon" alt="Président Adjoint">
+            </div>
+            <div class="nav2">
+                <a href="#"><h3>Secrétariat</h3></a>
+                <img src="../image/photo/lonely.JPG" class="icon" alt="Secrétariat">
+            </div>
+        </div>
+    </nav>
+
+    <div class="corps">
+        <article id="service">
+            <div class="boite">
+                <div class="image">
+                    <h2>RENOVATION</h2>
+                    <div class="image1">
+                        <div class="image2" style="background-image: url('../image/img1/img1.JPG');"></div>
+                    </div>
+                </div>
+                <div class="text">
+                    <p>L'Association 1000 jeunes met à votre disposition différents services liés à l'embellissement de votre maison.</p>
+                    <h3>SERVICES DISPONIBLES :</h3>
+                    <select>
+                        <option>Rénovation maison</option>
+                        <option>Rénovation de la clôture</option>
+                        <option>Rénovation de la voiture</option>
+                        <option>Coiffure à domicile</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="boite">
+                <div class="image">
+                    <h2>KIN-MUINDA</h2>
+                    <div class="image3">
+                        <div class="image4" style="background-image: url('../image/img2/img1.JPG');"></div>
+                    </div>
+                </div>
+                <div class="text">
+                    <p>Services d'automatisation et solutions électriques pour votre confort.</p>
+                    <h3>SERVICES DISPONIBLES :</h3>
+                    <select>
+                        <option>Automatisation à domicile</option>
+                        <option>Réparation d'erreur</option>
+                        <option>Éclairage LED solution</option>
+                        <option>Tableau de bord mise à niveau</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="boite">
+                <div class="image">
+                    <h2>KIN-MAKUSA</h2>
+                    <div class="image5">
+                        <div class="image6" style="background-image: url('../image/img4/img1.JPG');"></div>
+                    </div>
+                </div>
+                <div class="text">
+                    <p>Services de restauration et produits alimentaires de qualité.</p>
+                    <h3>SERVICES DISPONIBLES :</h3>
+                    <select>
+                        <option>Légumes frais</option>
+                        <option>Spécialités locales</option>
+                        <option>Fruits de mer</option>
+                        <option>Pâtisserie</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="boite">
+                <div class="image">
+                    <h2>KIN-CLEAN</h2>
+                    <div class="image7">
+                        <div class="image8" style="background-image: url('../image/img3/img3.JPG');"></div>
+                    </div>
+                </div>
+                <div class="text">
+                    <p>Services de nettoyage professionnel pour tous vos espaces.</p>
+                    <h3>SERVICES DISPONIBLES :</h3>
+                    <select>
+                        <option>Propreté bâtiment</option>
+                        <option>Propreté bureau</option>
+                        <option>Propreté domicile</option>
+                        <option>Propreté voiture</option>
+                    </select>
+                </div>
+            </div>
+        </article>
+
+        <div class="block">
+            <div class="block1">
+                <div class="last">
+                    <a href="#" class="quiz">👥 Qui sommes-nous</a>
+                    <a href="#" class="quiz">📍 Nous rejoindre</a>
+                    <a href="#" class="quiz">🤝 Devenir partenaire</a>
+                </div>
+            </div>
+            <div class="block2">
+                <div class="sites">
+                    <a href="#" class="quiz">📘 FACEBOOK</a>
+                    <a href="#" class="quiz">💬 WHATSAPP</a>
+                    <a href="#" class="quiz">📸 INSTAGRAM</a>
+                    <a href="#" class="quiz">🐦 TWITTER</a>
+                    <a href="#" class="quiz">✉️ MAIL</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="formation">
+        <div class="form1">
+            <h1 class="titre">AUTRES<br>SERVICES</h1>
+            <div class="toph">
+                <li>Formation en Photographie PRO</li>
+                <li>Formation en bureautique</li>
+                <li>Formation en couture</li>
+                <li>Formation en fabrication de produits alimentaires</li>
+                <li>Formation en Maroquinerie</li>
+                <li>Formation en langue
+                    <ul>Français</ul>
+                    <ul>Anglais</ul>
+                </li>
+                <li>Formation en cuisine</li>
+            </div>
+        </div>
+    </div>
+
+    <div class="pied" id="info">
+        <div class="post">
+            <h2>Histoire</h2>
+            <p>Association 1000 jeunes est une initiative d'un groupe de jeunes congolais avec des ambitions de progrès dans la vie de la jeunesse.</p>
+        </div>
+        <div class="post">
+            <h2>Président</h2>
+            <p>L'Association a comme président Mr THOMMY KAZADI, un mentor pour la jeunesse congolaise.</p>
+            <a href="#" class="clique">Contacter</a>
+        </div>
+        <div class="post">
+            <h2>P. Adjoint</h2>
+            <p>Le rôle de président adjoint est endossé par un homme avec plein d'énergie positive pour notre jeunesse.</p>
+            <a href="#" class="clique">Contacter</a>
+        </div>
+        <div class="post">
+            <h2>Secrétariat</h2>
+            <p>Une femme de valeur qui consacre son temps au service de son prochain, car la réussite des autres fait son bonheur.</p>
+            <a href="#" class="clique">Contacter</a>
+        </div>
+    </div>
+
+    <div class="corp3" id="contact">
+        <div class="contact">
+            <h2 class="cont">Contact</h2>
+        </div>
+        <div class="adresse">
+            <h2 class="sec">Secrétariat</h2>
+            <a href="#" class="quiz">📞 (+243) 899443917</a>
+            <a href="#" class="quiz">✉️ ephraimekalala20@gmail.com</a>
+            
+            <h2 class="sec">Chargé de communication</h2>
+            <a href="#" class="quiz">📞 (+243) 899443917</a>
+            <a href="#" class="quiz">✉️ ephraimekalala20@gmail.com</a>
+        </div>
+        <div class="carte" style="background-image: url('../image/photo/carte1.JPG');"></div>
+    </div>
+
+    <footer>
+        <h4>Copyright from Ephra-winter DEV</h4> 
+    </footer>
+</body>
+</html>
